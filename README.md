@@ -52,8 +52,6 @@ Running `install.sh` accepts the terms in `LICENSE`. The script:
 4. installs the `velvet-cam` service, without starting it on its own;
 5. warns if Blackmagic Desktop Video is not installed.
 
-When the installer asks for a GitHub token, press Enter and leave it empty. Releases in this repository are public, and the dashboard downloads updates without a token.
-
 Start the encoder, and enable it at boot if it should come up with the machine:
 
 ```bash
