@@ -25,7 +25,7 @@ Interlaced SDI formats, such as 1080i50, are sent as they arrive. Deinterlacing 
 
 | Requirement | Notes |
 |-------------|--------|
-| System | Ubuntu 22.04 or 24.04, 64-bit |
+| System | Ubuntu 26.04, 64-bit |
 | Card | Blackmagic DeckLink |
 | Driver | Blackmagic Desktop Video, installed separately |
 | Network | `apt` access during installation, then the network used for NDI or SRT |
@@ -33,6 +33,8 @@ Interlaced SDI formats, such as 1080i50, are sent as they arrive. Deinterlacing 
 | NDI\|HX return | FFmpeg 7 libraries. High Bandwidth NDI return does not need them |
 
 The package already includes the NDI and SDL2 runtimes. The target machine does not need a compiler, the DeckLink SDK, or the NDI SDK.
+
+The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu releases cannot start it.
 
 ## Install
 
