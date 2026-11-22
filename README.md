@@ -90,18 +90,34 @@ Saved preferences and sessions stay on the computer.
 
 ### Tally and PTT
 
-Default wiring, changeable under **Hardware**:
+A small USB board lights the program and preview tally LEDs, closes an on-air contact, and reads a push-to-talk button. The sketch is [`arduino/on_camera_tally_ptt/on_camera_tally_ptt.ino`](arduino/on_camera_tally_ptt/on_camera_tally_ptt.ino). Velvet Cam does not install or flash it: program the board once with the Arduino IDE, then plug it into the encoder computer.
+
+Use one of these boards:
+
+- **Seeeduino XIAO** (SAMD21), preferred. Logic is 3.3 V. Use external pins D0–D10 only.
+- **Arduino Leonardo**, or a **SparkFun Pro Micro** at 5 V / 16 MHz.
+
+Flash it:
+
+1. Install the [Arduino IDE](https://www.arduino.cc/en/software).
+2. For a XIAO, open Boards Manager, install **Seeed SAMD Boards**, and select **Seeeduino XIAO**. For a Leonardo, select **Arduino Leonardo**. For a Pro Micro, install **SparkFun AVR Boards** and select **SparkFun Pro Micro**, 5 V, 16 MHz.
+3. Open `on_camera_tally_ptt.ino`.
+4. Select the board's serial port and click Upload.
+
+Wire the default pins. Each LED needs a series resistor. The on-air pin is a switch to ground: use it to drive a relay coil with a flyback diode, an optocoupler, or a camera GPI that expects a contact to ground. Do not tie that pin straight to a supply rail.
 
 | Signal | Pin | Notes |
 |--------|-----|--------|
 | PTT button | D3 to GND | Internal pull-up; pressed means talk |
-| Program LED | D2 | Lit on program tally |
-| Preview LED | D8 | Lit on preview tally |
-| On-air contact | D4 to GND | Pulled to ground while program is on |
+| Program LED | D2 | Lit while program tally is on |
+| Preview LED | D8 | Lit while preview tally is on |
+| On-air contact | D4 to GND | Pulled to ground while program tally is on, floating when it is off |
 
-On a Seeeduino XIAO the levels are 3.3 V, and the external pins to use are D0–D10. Holding the hardware PTT turns talkback on. Releasing it leaves a dashboard latch unchanged.
+Connect the board to the encoder with USB. In the dashboard open **Hardware**, enable the Arduino serial bridge, and choose **auto** or the right `/dev/ttyACM*` port. Save. The same page can move the four signals to other pins; Velvet Cam sends that map to the board. If the computer has another USB serial device, such as a built-in Leonardo, pick the tally board's port instead of auto.
 
-In SRT output, NDI tally does not apply, so the LEDs and the on-air contact stay off. PTT and the intercom keep working.
+Holding the hardware button turns talkback on. Releasing it leaves a talk latch set in the dashboard unchanged.
+
+In SRT output, NDI tally does not arrive, so the LEDs and the on-air contact stay off. PTT and the intercom keep working.
 
 ## Updates
 
