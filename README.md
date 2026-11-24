@@ -30,6 +30,7 @@ Interlaced SDI formats, such as 1080i50, are sent as they arrive. Deinterlacing 
 | Driver | Blackmagic Desktop Video, installed separately |
 | Network | `apt` access during installation, then the network used for NDI or SRT |
 | SRT | Intel GPU with VA-API, and the user in the `render` group |
+| Arduino tally / PTT | USB serial. The installer adds the service user to the `dialout` group |
 | NDI\|HX return | FFmpeg 7 libraries. High Bandwidth NDI return does not need them |
 
 The package already includes the NDI and SDL2 runtimes. The target machine does not need a compiler, the DeckLink SDK, or the NDI SDK.
@@ -38,11 +39,11 @@ The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu release
 
 ## Install
 
-Download `velvet-cam-1.2.0.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
+Download `velvet-cam-1.2.1.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
 
 ```bash
-tar xf velvet-cam-1.2.0.tar.gz
-cd velvet-cam-1.2.0
+tar xf velvet-cam-1.2.1.tar.gz
+cd velvet-cam-1.2.1
 sudo ./install.sh
 ```
 
@@ -76,7 +77,7 @@ Remove the program with:
 sudo velvet-cam-uninstall
 ```
 
-Saved preferences and sessions stay on the computer.
+Saved preferences and sessions stay in `~/.velvet-cam`.
 
 ## Use
 
