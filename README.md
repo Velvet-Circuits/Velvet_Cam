@@ -2,7 +2,7 @@
 
 Velvet Cam is a Linux encoder for on-camera use. It takes one SDI input from a Blackmagic DeckLink card and publishes it on the network as an NDI source, or as an SRT stream.
 
-One channel. The web dashboard configures the input, the output, the local preview, the intercom, and tally.
+The web dashboard configures the SDI output, a test pattern generator, the local preview, the intercom, and tally.
 
 ## How it works
 
@@ -10,6 +10,8 @@ The camera feeds SDI into the DeckLink card. Velvet Cam captures that signal and
 
 - **NDI.** A source on the local network. The default name is `Velvet-Cam` followed by the input number. NDI receivers, including Studio Monitor, see it like any other source. While the dashboard is running, the source also advertises the dashboard address: in Studio Monitor the gear icon opens that page.
 - **SRT.** The same input leaves as MPEG-TS, with H.264 or H.265 video and AAC-LC audio. Velvet Cam can listen on a port, or call a remote address. AES encryption uses a passphrase of 10 to 79 characters. Video is encoded on an Intel GPU through VA-API, and only while a receiver is connected.
+
+The Encode page also has a test pattern generator, separate from the SDI input. It publishes a SpeedHQ 8-bit YUV 4:2:2 pattern, 1080p50 by default, with its own audio. Start and stop it on its own. A zone plate can be grayscale, chroma, or RGB.
 
 On the display attached to the computer, the SDI input is shown full screen. An NDI return can be overlaid full screen, or as a picture-in-picture at half or quarter size in one of the four corners.
 
@@ -39,11 +41,11 @@ The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu release
 
 ## Install
 
-Download `velvet-cam-1.3.0.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
+Download `velvet-cam-1.3.1.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
 
 ```bash
-tar xf velvet-cam-1.3.0.tar.gz
-cd velvet-cam-1.3.0
+tar xf velvet-cam-1.3.1.tar.gz
+cd velvet-cam-1.3.1
 sudo ./install.sh
 ```
 
@@ -89,7 +91,7 @@ Saved preferences and sessions stay in `~/.velvet-cam`.
 6. In **Hardware**, enable the Arduino or XIAO board when one is connected.
 7. Under **Settings → Sessions**, save the session. On the next start Velvet Cam comes back with the same configuration.
 
-**Dashboard** summarizes the computer, the encode, and any alerts. **Encode** is the live channel, with start, stop, and edit.
+**Dashboard** summarizes the computer, the encode, and any alerts. **Encode** shows the SDI output and the test pattern generator. Each one is configured and started on its own.
 
 ### Tally and PTT
 
