@@ -41,11 +41,11 @@ The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu release
 
 ## Install
 
-Download `velvet-cam-1.3.1.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
+Download `velvet-cam-1.3.2.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
 
 ```bash
-tar xf velvet-cam-1.3.1.tar.gz
-cd velvet-cam-1.3.1
+tar xf velvet-cam-1.3.2.tar.gz
+cd velvet-cam-1.3.2
 sudo ./install.sh
 ```
 
@@ -91,7 +91,7 @@ Saved preferences and sessions stay in `~/.velvet-cam`.
 6. In **Hardware**, enable the Arduino or XIAO board when one is connected.
 7. Under **Settings → Sessions**, save the session. On the next start Velvet Cam comes back with the same configuration.
 
-**Dashboard** summarizes the computer, the encode, and any alerts. **Encode** shows the SDI output and the test pattern generator. Each one is configured and started on its own.
+**Dashboard** summarizes the computer, the encode, and any alerts. Network shows inbound and outbound throughput of the default-route interface, with its IPv4 address. **Encode** shows the SDI output and the test pattern generator. Each one is configured and started on its own.
 
 ### Tally and PTT
 
