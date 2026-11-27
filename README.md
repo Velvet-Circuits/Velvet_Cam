@@ -17,7 +17,7 @@ The intercom plays the audio of an NDI source on the computer output. The microp
 
 An Arduino or Seeeduino XIAO on USB lights the program and preview tally LEDs and reads the PTT button. An on-air contact closes while program tally is on.
 
-The first start without a license keeps the SDI-to-NDI and SDI-to-SRT outputs open for five days. A license is one signed line for that computer and for a period. Paste it under **Settings → License**. The expiry date is part of the license. After that date the outputs stay open for seven more days, then they close. The dashboard stays available. An expired license does not start the five days again.
+The first start without a license keeps the SDI-to-NDI and SDI-to-SRT outputs open for five days. A license is one signed line for that computer and for a period. Paste it under **Settings → General**. The expiry date is part of the license. After that date the outputs stay open for seven more days, then they close. The dashboard stays available. An expired license does not start the five days again.
 
 Interlaced SDI formats, such as 1080i50, are sent as they arrive. Deinterlacing is not available yet. Use a progressive format for SRT.
 
@@ -39,11 +39,11 @@ The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu release
 
 ## Install
 
-Download `velvet-cam-1.2.1.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
+Download `velvet-cam-1.3.0.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
 
 ```bash
-tar xf velvet-cam-1.2.1.tar.gz
-cd velvet-cam-1.2.1
+tar xf velvet-cam-1.3.0.tar.gz
+cd velvet-cam-1.3.0
 sudo ./install.sh
 ```
 
@@ -61,9 +61,9 @@ Start the encoder, and enable it at boot if it should come up with the machine:
 sudo systemctl enable --now velvet-cam
 ```
 
-Or open **Velvet Cam** from the applications menu. Autostart can also be turned on from the dashboard, under **Settings → Application**.
+Or open **Velvet Cam** from the applications menu. Autostart can also be turned on from the dashboard, under **Settings → Maintenance**.
 
-The dashboard is at [http://localhost:18080/](http://localhost:18080/). From another computer on the network, use the same port and this machine's IP address. Change the port under **Settings → UI**. A different port restarts Velvet Cam and opens the page at the new address.
+The dashboard is at [http://localhost:18080/](http://localhost:18080/). From another computer on the network, use the same port and this machine's IP address. Change the port under **Settings → General**. A different port restarts Velvet Cam and opens the page at the new address.
 
 Service logs:
 
@@ -83,13 +83,13 @@ Saved preferences and sessions stay in `~/.velvet-cam`.
 
 1. Connect the camera to the DeckLink card and confirm in Blackmagic Desktop Video that the signal is locked.
 2. Open the dashboard.
-3. In **Configure**, choose the SDI input, the source name, and NDI or SRT output, then start the encode.
+3. On **Encode**, open **Configure**, choose the SDI input, the source name, and NDI or SRT output, then start the encode.
 4. In **Preview**, turn on the local monitor and, if needed, choose the NDI return, its size, and its corner.
 5. In **Intercom**, choose the source to listen to and the talkback microphone.
 6. In **Hardware**, enable the Arduino or XIAO board when one is connected.
-7. Save the session. On the next start Velvet Cam comes back with the same configuration.
+7. Under **Settings → Sessions**, save the session. On the next start Velvet Cam comes back with the same configuration.
 
-**Dashboard** summarizes the computer, the encode, and any alerts. **Channels** is the live channel, with start, pause, and edit.
+**Dashboard** summarizes the computer, the encode, and any alerts. **Encode** is the live channel, with start, stop, and edit.
 
 ### Tally and PTT
 
@@ -124,4 +124,4 @@ In SRT output, NDI tally does not arrive, so the LEDs and the on-air contact sta
 
 ## Updates
 
-Under **Settings → Updates**, Velvet Cam checks the releases in this repository. The archive is named `velvet-cam-<version>.tar.gz`. An update replaces the program in `/opt/velvet-cam` and restarts the service.
+Under **Settings → Maintenance**, Velvet Cam checks the releases in this repository. The archive is named `velvet-cam-<version>.tar.gz`. An update replaces the program in `/opt/velvet-cam` and restarts the service.
