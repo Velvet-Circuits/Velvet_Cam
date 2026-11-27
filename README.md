@@ -11,7 +11,7 @@ The camera feeds SDI into the DeckLink card. Velvet Cam captures that signal and
 - **NDI.** A source on the local network. The default name is `Velvet-Cam` followed by the input number. NDI receivers, including Studio Monitor, see it like any other source. While the dashboard is running, the source also advertises the dashboard address: in Studio Monitor the gear icon opens that page.
 - **SRT.** The same input leaves as MPEG-TS, with H.264 or H.265 video and AAC-LC audio. Velvet Cam can listen on a port, or call a remote address. AES encryption uses a passphrase of 10 to 79 characters. Video is encoded on an Intel GPU through VA-API, and only while a receiver is connected.
 
-The Encode page also has a test pattern generator, separate from the SDI input. It publishes a SpeedHQ 8-bit YUV 4:2:2 pattern, 1080p50 by default, with its own audio. Start and stop it on its own. A zone plate can be grayscale, chroma, or RGB.
+The Encode page also has a test pattern generator, separate from the SDI input. It publishes a SpeedHQ 8-bit YUV 4:2:2 pattern, 1080p50 by default, with its own audio. Start and stop it on its own. A zone plate can be grayscale, chroma, or RGB. Like the SDI sender, the generator registers with the NDI Discovery Server so monitoring and control see that source.
 
 On the display attached to the computer, the SDI input is shown full screen. An NDI return can be overlaid full screen, or as a picture-in-picture at half or quarter size in one of the four corners.
 
@@ -41,11 +41,11 @@ The binary is built on Ubuntu 26.04 and needs glibc 2.43. Earlier Ubuntu release
 
 ## Install
 
-Download `velvet-cam-1.3.2.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
+Download `velvet-cam-1.3.3.tar.gz` from the [releases](https://github.com/Velvet-Circuits/Velvet_Cam/releases/latest).
 
 ```bash
-tar xf velvet-cam-1.3.2.tar.gz
-cd velvet-cam-1.3.2
+tar xf velvet-cam-1.3.3.tar.gz
+cd velvet-cam-1.3.3
 sudo ./install.sh
 ```
 
@@ -126,4 +126,4 @@ In SRT output, NDI tally does not arrive, so the LEDs and the on-air contact sta
 
 ## Updates
 
-Under **Settings → Maintenance**, Velvet Cam checks the releases in this repository. The archive is named `velvet-cam-<version>.tar.gz`. An update replaces the program in `/opt/velvet-cam` and restarts the service.
+Under **Settings → Maintenance**, Velvet Cam checks the releases in this repository. The check talks to GitHub from the program itself, so the camera computer does not need `curl`. The archive is named `velvet-cam-<version>.tar.gz`. An update replaces the program in `/opt/velvet-cam` and restarts the service.
